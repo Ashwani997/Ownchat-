@@ -9,14 +9,14 @@ const mongoose = require('mongoose');
 const User = require('./models/user');
 const userRoute = require('./router/user');
 // // bootstrap set
-// app.use(
-//   '/css',
-//   express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css'))
-// );
-// app.use(
-//   '/js',
-//   express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js'))
-// );
+app.use(
+  '/css',
+  express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css'))
+);
+app.use(
+  '/js',
+  express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js'))
+);
 
 // staticRoute is an import
 const staticRoute = require('./router/staticRoute');
