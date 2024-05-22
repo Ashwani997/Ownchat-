@@ -10,7 +10,7 @@ body {
     color: #333;
     background-color: #1A2E40;
 }
-
+/* its an login CSS */
 .form-wrapper{
     margin: 0 auto;
     width: 350px;
@@ -71,6 +71,72 @@ h1{
 }
 
 .btn:hover{
+    padding: .45rem .75rem;
+    border: none;
+    font-weight: 600;
+}
+/* its an signup part CSS*/
+
+.sign-text{
+    margin: 0 auto;
+    width: 350px;
+    background-color: #5889b3;
+    padding: 37px 15px ;
+    border-radius: 10px;
+    height: 370px;
+    box-shadow: 0px 0px 17px -4px white;
+    margin-top: 120px;
+}
+
+.nc-3{
+    margin-bottom: 10px;
+}
+.form-method{
+    display: block;
+    color: black;
+    font-weight: 600;
+}
+h1{
+    margin-bottom: 25px;
+    color: black;
+    text-align: center;
+}
+.form-text{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.form-text:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25);
+}
+
+.btn-2{
+    padding: 0.55rem 1.25rem;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+    background: #1a2e40;
+    color: white;
+}
+
+.btn-2:hover{
     padding: .45rem .75rem;
     border: none;
     font-weight: 600;

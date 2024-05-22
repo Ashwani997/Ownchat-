@@ -4,17 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
+    <div class="sign-text">
     <h1>Signup</h1>
     <form action="/user" method="post">
-      <label>Full Name</label>
-      <input type="text" required name="name" />
-      <label>Email</label>
-      <input type="text" required name="email" />
-      <label>Password</label>
-      <input type="text" required name="password" />
-      <button type="submit">Signup</button>
-    </form>
+      <div class="nc-3">
+      <label class="form-method">Full Name</label>
+      <input type="text" title="full name" class="form-text" required name="name" />
+    </div>
+    <div class="nc-3">
+      <label class="form-method">Email</label>
+      <input type="text" title="email" class="form-text" required name="email" />
+    </div>
+      <div class="nc-3">
+      <label class="form-method">Password</label>
+      <input type="text"  title="password" class="form-text" required name="password" />
+    </div>
+      <button type="submit" class="btn-2">Signup</button>
+     </form>
+  </div>
   </body>
 </html>
