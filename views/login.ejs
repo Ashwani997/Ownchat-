@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <style>
-      body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #0000ff;
-      }
-    </style>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div class="form-wrapper">
     <h1>Login</h1>
     <form action="/user/login" method="post">
-      <label>Email</label>
-      <input type="text" required name="email" />
-      <label>Password</label>
-      <input type="text" required name="password" />
-      <button type="submit" style="color: blue">Login</button>
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="text" required name="email" />
+      </div>
+      <div class="mb-3">
+        <label>Password</label>
+        <input type="text" required name="password" />
+      </div>
+      <button type="submit">Login</button>
     </form>
-  </body>
+  </div>
+</body>
+
 </html>

@@ -8,15 +8,6 @@ const { connectToMongoDB } = require('./connect');
 const mongoose = require('mongoose');
 const User = require('./models/user');
 const userRoute = require('./router/user');
-// // bootstrap set
-app.use(
-  '/css',
-  express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css'))
-);
-app.use(
-  '/js',
-  express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js'))
-);
 
 // staticRoute is an import
 const staticRoute = require('./router/staticRoute');
@@ -35,6 +26,8 @@ app.use(cookieParser());
 
 //static route
 app.use('/', staticRoute);
+app.use(express.static(__dirname + '/assets'));
+
 //userRoute
 app.use('/user', userRoute);
 
