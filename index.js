@@ -29,10 +29,12 @@ app.use('/', staticRoute);
 app.use(express.static(__dirname + '/assets'));
 
 //userRoute
-app.use('/user', userRoute);
+app.use('/auth', userRoute);
 
 //set the ejs template engine
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'));
 
-app.listen(PORT, () => console.log(`Server Started at PORT:http://localhost:${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Server Started at PORT:http://localhost:${PORT}`)
+);

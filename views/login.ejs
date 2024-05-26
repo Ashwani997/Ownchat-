@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link href="/css/style.css" rel="stylesheet" type="text/css">
-</head>
-
-<body>
-  <div class="form-wrapper">
-    <h1>Login</h1>
-    <form action="/user/login" method="post">
-      <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="text" title="email" class="form-input" required name="email" />
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input type="text" title="password" class="form-input" name="password" />
-      </div>
-      <button type="submit" class="btn">Login</button>
-    </form>
-  </div>
-</body>
-
+  <body>
+    <div class="form-wrapper">
+      <h1>Login</h1>
+      <form action="/auth/login" method="post">
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input
+            type="text"
+            title="email"
+            class="form-input"
+            required
+            name="email"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input
+            type="text"
+            title="password"
+            class="form-input"
+            name="password"
+          />
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
+  </body>
 </html>
