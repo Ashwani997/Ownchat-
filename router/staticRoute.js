@@ -6,6 +6,10 @@ const router = express.Router();
 router.get('/', (req, res) => {
   return res.render('login');
 });
+// get request to render the login page
+router.get('/login', (req, res) => {
+  return res.render('login');
+});
 
 //get request to render the dashboard page
 router.get('/dashboard', (req, res) => {
@@ -15,10 +19,6 @@ router.get('/dashboard', (req, res) => {
 // get request to render the sign up page
 router.get('/signup', (req, res) => {
   return res.render('signup');
-});
-// get request to render the sign up page
-router.get('/login', (req, res) => {
-  return res.render('login');
 });
 
 module.exports = router;
