@@ -1,12 +1,24 @@
 const express = require('express');
 //application define
 const app = express();
-const OpenAI = require('openai');
-const dotenv = require('dotenv');
-
-const openai = new OpenAI({
-  apiKey: process.env['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'],
+const { config } = require('dotenv');
+//load environment variables
+config();
+const {OpenAI}  = require('openai');
+//Initialize OpenAI API
+const openai= new OpenAI({
+  apiKey:process.env.OpenaiKey
 });
+// Define a route to handle questions for openai key response
+app.get("/ask",async (req,res)=> {
+  // Call the OpenAI API to generate an answer
+  const completion = await openai.createCompletion({
+    model:""
+  
+  });
+  res.send(completion.data);
+})
+
 const path = require('path');
 const cookieParser = require('cookie-parser');
 //import the mongodb
@@ -19,7 +31,7 @@ const userRoute = require('./router/user');
 const staticRoute = require('./router/staticRoute');
 
 //Set the port
-const PORT = 8300;
+const PORT = process.env.PORT||8300;
 
 connectToMongoDB('mongodb://127.0.0.1:27017/OwnChat')
   .then(() => console.log('Mongodb Connected'))
