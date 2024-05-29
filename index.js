@@ -1,6 +1,12 @@
 const express = require('express');
 //application define
 const app = express();
+const dotenv = require('dotenv');
+const OpenAI = require('openai');
+
+// const openai = new OpenAI({
+//   apiKey: process.env['OPENAI_API_KEY']
+// });
 const path = require('path');
 const cookieParser = require('cookie-parser');
 //import the mongodb
