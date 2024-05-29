@@ -9,13 +9,18 @@ const OpenAI = require('openai');
 const openai = new OpenAI({
   apiKey: process.env.Openaikey
 });
+// Define a route to handle questions
 app.get("/ask", async(req,res) => {
   const completion = await openai.createCompletion({
-    model: 'tts-1',
-    prompt: req.query.question,
+    // model :"text-davinci-003",
+    // prompt: "Hello, how are you?",
+    // max_tokens: 32,
+    // n: 1,
+    // stop: ".",
+    // temperature: 0.5,
 
   });
-  res.send(completion.data)
+  res.send(completion.data.choices[0].text);
 });
 
 
