@@ -1,12 +1,12 @@
 const express = require('express');
 //application define
 const app = express();
-const dotenv = require('dotenv');
 const OpenAI = require('openai');
+const dotenv = require('dotenv');
 
-// const openai = new OpenAI({
-//   apiKey: process.env['OPENAI_API_KEY']
-// });
+const openai = new OpenAI({
+  apiKey: process.env['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'],
+});
 const path = require('path');
 const cookieParser = require('cookie-parser');
 //import the mongodb
@@ -41,4 +41,6 @@ app.use('/auth', userRoute);
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'));
 
-app.listen(PORT, () => console.log(`Server Started at PORT:http://localhost:${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Server Started at PORT:http://localhost:${PORT}`)
+);
