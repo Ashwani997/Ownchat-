@@ -6,8 +6,7 @@ const { config } = require('dotenv');
 config();
 //import the GoogleGenerativeAI
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-//import 
-const model = require("./geminiapi/user");
+
 const path = require('path');
 const cookieParser = require('cookie-parser');
 //import the mongodb
@@ -18,6 +17,8 @@ const userRoute = require('./router/user');
 
 // staticRoute is an import
 const staticRoute = require('./router/staticRoute');
+
+
 
 //Set the port
 const PORT = process.env.PORT||8300;
@@ -41,6 +42,30 @@ app.use('/auth', userRoute);
 //set the ejs template engine
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'));
+
+
+
+app.post('/question', (req, res) => {
+  const name = req.body.name;
+  
+  // Access your API key as an environment variable (see "Set up your API key" above)
+  const genAI = new GoogleGenerativeAI(process.env.api_KEY);
+
+  async function run() {
+    // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    const result = await model.generateContent(name);
+    const response = await result.response;
+    const text = response.text();
+    //console.log(text);
+    res.render('dashboard', { text, name });
+  }
+
+  run();
+
+});
+
 
 app.listen(PORT, () =>
   console.log(`Server Started at PORT:http://localhost:${PORT}`)
