@@ -5,7 +5,7 @@ const { config } = require('dotenv');
 //load environment file
 config();
 //import the GoogleGenerativeAI
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -14,14 +14,12 @@ const { connectToMongoDB } = require('./connect');
 const mongoose = require('mongoose');
 const User = require('./models/user');
 const userRoute = require('./router/user');
-
+let conversation = [];
 // staticRoute is an import
 const staticRoute = require('./router/staticRoute');
 
-
-
 //Set the port
-const PORT = process.env.PORT||8300;
+const PORT = process.env.PORT || 8300;
 
 connectToMongoDB('mongodb://127.0.0.1:27017/OwnChat')
   .then(() => console.log('Mongodb Connected'))
@@ -43,29 +41,38 @@ app.use('/auth', userRoute);
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'));
 
+// POST request to handle form submission
+app.post('/dashboard', async (req, res) => {
+  const question = req.body.question;
+  const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
+  const generationConfig = {
+    stopSequences: ['red'],
+    maxOutputTokens: 450,
+    temperature: 0.9,
+    topP: 0.1,
+    topK: 16,
+  };
 
-app.post('/question', (req, res) => {
-  const name = req.body.name;
-  
-  // Access your API key as an environment variable (see "Set up your API key" above)
-  const genAI = new GoogleGenerativeAI(process.env.api_KEY);
+  try {
+    const model = genAI.getGenerativeModel({
+      model: 'gemini-1.5-flash',
+      generationConfig,
+    });
 
-  async function run() {
-    // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const result = await model.generateContent(question);
+    const answer = await result.response.text();
 
-    const result = await model.generateContent(name);
-    const response = await result.response;
-    const text = response.text();
-    //console.log(text);
-    res.render('dashboard', { text, name });
+    // Store the question and answer in the conversation array
+    conversation.push({ question, answer });
+
+    // Return the updated conversation history as JSON
+    res.json({ conversation });
+  } catch (error) {
+    console.error('Error generating content:', error);
+    res.status(500).json({ error: 'Error generating content' });
   }
-
-  run();
-
 });
-
 
 app.listen(PORT, () =>
   console.log(`Server Started at PORT:http://localhost:${PORT}`)

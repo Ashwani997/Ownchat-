@@ -1,5 +1,7 @@
 //static route is a fronted part
 const express = require('express');
+// In-memory array to store conversation history
+let conversation = [];
 const router = express.Router();
 
 //get request to render the home page
@@ -13,7 +15,7 @@ router.get('/login', (req, res) => {
 
 //get request to render the dashboard page
 router.get('/dashboard', (req, res) => {
-  return res.render('dashboard', { text: '', name: '' });
+  return res.render('dashboard', { conversation });
 });
 
 // get request to render the sign up page
