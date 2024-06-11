@@ -19,6 +19,12 @@
       h1 {
         text-align: center;
         padding: 30px 0;
+        color: blanchedalmond;
+      }
+      .btn-part{
+        background-color: blanchedalmond;
+        color: brown;
+        margin: 25px;
       }
       body {
         background-image: url("../Images/image.jpg");
@@ -86,10 +92,15 @@
         border-radius: 10px;
         background-color: #f5f5f5;
       }
+    
+      
     </style>
   </head>
   <body>
     <h1>Welcome to AI Chat</h1>
+    <div class = "log">
+      <button type="submit" class="btn-part">Log Out</button>
+    </div>
 
     <div id="conversationList">
       <% conversation.forEach(item => { %>
