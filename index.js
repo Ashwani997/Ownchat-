@@ -73,7 +73,7 @@ app.post('/dashboard', async (req, res) => {
     res.status(500).json({ error: 'Error generating content' });
   }
 });
-
+  
 app.listen(PORT, () =>
   console.log(`Server Started at PORT:http://localhost:${PORT}`)
 );
